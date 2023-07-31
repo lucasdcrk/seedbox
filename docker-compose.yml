@@ -17,8 +17,8 @@ services:
       - HTTP_USER="${HTTP_USER}"
       - HTTP_PASS="${HTTP_PASS}"
     volumes:
-      - ${BASE_PATH}/caddy/config:/config
-      - ${BASE_PATH}/caddy/panel:/panel
+      - ${BASE_PATH}/caddy/Caddyfile:/app/Caddyfile
+      - ${BASE_PATH}/caddy/www:/app/www
       - ${BASE_PATH}/downloads:/downloads
     cap_add:
       - NET_ADMIN
