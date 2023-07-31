@@ -17,9 +17,9 @@ services:
       - HTTP_USER="${HTTP_USER}"
       - HTTP_PASS="${HTTP_PASS}"
     volumes:
-      - ${BASE_PATH}/caddy/Caddyfile:/app/Caddyfile
-      - ${BASE_PATH}/caddy/www:/app/www
-      - ${BASE_PATH}/downloads:/downloads
+      - ${BASE_PATH}/data/caddy/Caddyfile:/app/Caddyfile
+      - ${BASE_PATH}/data/caddy/www:/app/www
+      - ${BASE_PATH}/data/downloads:/downloads
     cap_add:
       - NET_ADMIN
     networks:
@@ -38,9 +38,9 @@ services:
       - TZ=${TZ}
       - PLEX_PASS=${PLEX_PASS}
     volumes:
-      - ${BASE_PATH}/plex/config:/config
-      - ${BASE_PATH}/plex/transcode:/transcode
-      - ${BASE_PATH}/downloads:/downloads
+      - ${BASE_PATH}/data/plex/config:/config
+      - ${BASE_PATH}/data/plex/transcode:/transcode
+      - ${BASE_PATH}/data/downloads:/downloads
     networks:
       - seedbox
 
@@ -54,7 +54,7 @@ services:
       - UMASK=${UMASK}
       - TZ=${TZ}
     volumes:
-      - ${BASE_PATH}/tautulli/config:/config
+      - ${BASE_PATH}/data/tautulli/config:/config
     networks:
       - seedbox
 
@@ -69,8 +69,8 @@ services:
       - TZ=${TZ}
       - FLOOD_AUTH=${FLOOD_AUTH}
     volumes:
-      - ${BASE_PATH}/rflood/config:/config
-      - ${BASE_PATH}/downloads:/downloads
+      - ${BASE_PATH}/data/rflood/config:/config
+      - ${BASE_PATH}/data/downloads:/downloads
     networks:
       - seedbox
 
@@ -84,7 +84,7 @@ services:
       - UMASK=${UMASK}
       - TZ=${TZ}
     volumes:
-      - ${BASE_PATH}/jackett/config:/config
+      - ${BASE_PATH}/data/jackett/config:/config
     networks:
       - seedbox
 
@@ -98,8 +98,8 @@ services:
       - UMASK=${UMASK}
       - TZ=${TZ}
     volumes:
-      - ${BASE_PATH}/sonarr/config:/config
-      - ${BASE_PATH}/downloads:/downloads
+      - ${BASE_PATH}/data/sonarr/config:/config
+      - ${BASE_PATH}/data/downloads:/downloads
     networks:
       - seedbox
 
@@ -113,8 +113,8 @@ services:
       - UMASK=${UMASK}
       - TZ=${TZ}
     volumes:
-      - ${BASE_PATH}/radarr/config:/config
-      - ${BASE_PATH}/downloads:/downloads
+      - ${BASE_PATH}/data/radarr/config:/config
+      - ${BASE_PATH}/data/downloads:/downloads
     networks:
       - seedbox
 
@@ -128,8 +128,8 @@ services:
       - UMASK=${UMASK}
       - TZ=${TZ}
     volumes:
-      - ${BASE_PATH}/overseerr/config:/config
-      - ${BASE_PATH}/downloads:/downloads
+      - ${BASE_PATH}/data/overseerr/config:/config
+      - ${BASE_PATH}/data/downloads:/downloads
     networks:
       - seedbox
 
