@@ -18,7 +18,7 @@ services:
       - HTTP_PASS="${HTTP_PASS}"
     volumes:
       - ./src/caddy/Caddyfile:/app/Caddyfile
-      - ./src/.env:/app/.env
+      - ./.env:/app/.env
       - ./containers/caddy/www:/app/www
       - ./containers/data/downloads:/downloads
     cap_add:
