@@ -29,8 +29,6 @@ services:
       - ./containers/plex/config:/config
       - ./containers/plex/transcode:/transcode
       - ./downloads:/downloads
-    networks:
-      - seedbox
 
   tautulli:
     container_name: tautulli
@@ -43,8 +41,6 @@ services:
       - TZ=${TZ}
     volumes:
       - ./containers/tautulli/config:/config
-    networks:
-      - seedbox
 
   rflood:
     container_name: rflood
@@ -59,8 +55,6 @@ services:
     volumes:
       - ./containers/rflood/config:/config
       - ./downloads:/downloads
-    networks:
-      - seedbox
 
   jackett:
     container_name: jackett
@@ -73,8 +67,6 @@ services:
       - TZ=${TZ}
     volumes:
       - ./containers/jackett/config:/config
-    networks:
-      - seedbox
 
   sonarr:
     container_name: sonarr
@@ -88,8 +80,6 @@ services:
     volumes:
       - ./containers/sonarr/config:/config
       - ./downloads:/downloads
-    networks:
-      - seedbox
 
   radarr:
     container_name: radarr
@@ -103,8 +93,6 @@ services:
     volumes:
       - ./containers/radarr/config:/config
       - ./downloads:/downloads
-    networks:
-      - seedbox
 
   overseerr:
     container_name: overseerr
@@ -118,10 +106,3 @@ services:
     volumes:
       - ./containers/overseerr/config:/config
       - ./downloads:/downloads
-    networks:
-      - seedbox
-
-networks:
-  seedbox:
-    name: seedbox
-    driver: bridge
