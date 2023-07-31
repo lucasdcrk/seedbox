@@ -1,9 +1,7 @@
 {$BASE_DOMAIN}
 
-route / {
-  root /app/www
-  file_server
-}
+root /app/www
+file_server
 
 basicauth /apps/* {
   {$HTTP_USER} {$HTTP_PASS}
