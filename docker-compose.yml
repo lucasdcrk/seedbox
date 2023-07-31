@@ -9,11 +9,11 @@ services:
       - ${CADDY_HTTP_PORT}:8080
       - ${CADDY_HTTPS_PORT}:8443
     environment:
-      - PUID="${DOCKER_PUID}"
-      - PGID="${DOCKER_PGID}"
-      - UMASK="${UMASK}"
-      - TZ="${TZ}"
-      - BASE_DOMAIN="${BASE_DOMAIN}"
+      - PUID=${DOCKER_PUID}
+      - PGID=${DOCKER_PGID}
+      - UMASK=${UMASK}
+      - TZ=${TZ}
+      - BASE_DOMAIN=${BASE_DOMAIN}
       - HTTP_USER="${HTTP_USER}"
       - HTTP_PASS="${HTTP_PASS}"
     volumes:
@@ -31,11 +31,11 @@ services:
     ports:
       - ${PLEX_PORT}:32400
     environment:
-      - PUID="${DOCKER_PUID}"
-      - PGID="${DOCKER_PGID}"
-      - UMASK="${UMASK}"
-      - TZ="${TZ}"
-      - PLEX_PASS="${PLEX_PASS}"
+      - PUID=${DOCKER_PUID}
+      - PGID=${DOCKER_PGID}
+      - UMASK=${UMASK}
+      - TZ=${TZ}
+      - PLEX_PASS=${PLEX_PASS}
     volumes:
       - ${BASE_PATH}/plex/config:/config
       - ${BASE_PATH}/plex/transcode:/transcode
@@ -47,10 +47,10 @@ services:
     image: cr.hotio.dev/hotio/tautulli
     restart: unless-stopped
     environment:
-      - PUID="${DOCKER_PUID}"
-      - PGID="${DOCKER_PGID}"
-      - UMASK="${UMASK}"
-      - TZ="${TZ}"
+      - PUID=${DOCKER_PUID}
+      - PGID=${DOCKER_PGID}
+      - UMASK=${UMASK}
+      - TZ=${TZ}
     volumes:
       - ${BASE_PATH}/tautulli/config:/config
     networks:
@@ -61,11 +61,11 @@ services:
     image: cr.hotio.dev/hotio/rflood
     restart: unless-stopped
     environment:
-      - PUID="${DOCKER_PUID}"
-      - PGID="${DOCKER_PGID}"
-      - UMASK="${UMASK}"
-      - TZ="${TZ}"
-      - FLOOD_AUTH="${FLOOD_AUTH}"
+      - PUID=${DOCKER_PUID}
+      - PGID=${DOCKER_PGID}
+      - UMASK=${UMASK}
+      - TZ=${TZ}
+      - FLOOD_AUTH=${FLOOD_AUTH}
     volumes:
       - ${BASE_PATH}/rflood/config:/config
     networks:
@@ -76,10 +76,10 @@ services:
     image: cr.hotio.dev/hotio/jackett
     restart: unless-stopped
     environment:
-      - PUID="${DOCKER_PUID}"
-      - PGID="${DOCKER_PGID}"
-      - UMASK="${UMASK}"
-      - TZ="${TZ}"
+      - PUID=${DOCKER_PUID}
+      - PGID=${DOCKER_PGID}
+      - UMASK=${UMASK}
+      - TZ=${TZ}
     volumes:
       - ${BASE_PATH}/jackett/config:/config
     networks:
@@ -90,10 +90,10 @@ services:
     image: cr.hotio.dev/hotio/sonarr
     restart: unless-stopped
     environment:
-      - PUID="${DOCKER_PUID}"
-      - PGID="${DOCKER_PGID}"
-      - UMASK="${UMASK}"
-      - TZ="${TZ}"
+      - PUID=${DOCKER_PUID}
+      - PGID=${DOCKER_PGID}
+      - UMASK=${UMASK}
+      - TZ=${TZ}
     volumes:
       - ${BASE_PATH}/sonarr/config:/config
     networks:
@@ -104,10 +104,10 @@ services:
     image: cr.hotio.dev/hotio/radarr
     restart: unless-stopped
     environment:
-      - PUID="${DOCKER_PUID}"
-      - PGID="${DOCKER_PGID}"
-      - UMASK="${UMASK}"
-      - TZ="${TZ}"
+      - PUID=${DOCKER_PUID}
+      - PGID=${DOCKER_PGID}
+      - UMASK=${UMASK}
+      - TZ=${TZ}
     volumes:
       - ${BASE_PATH}/radarr/config:/config
     networks:
@@ -118,10 +118,10 @@ services:
     image: cr.hotio.dev/hotio/overseerr
     restart: unless-stopped
     environment:
-      - PUID="${DOCKER_PUID}"
-      - PGID="${DOCKER_PGID}"
-      - UMASK="${UMASK}"
-      - TZ="${TZ}"
+      - PUID=${DOCKER_PUID}
+      - PGID=${DOCKER_PGID}
+      - UMASK=${UMASK}
+      - TZ=${TZ}
     volumes:
       - ${BASE_PATH}/overseerr/config:/config
     networks:
