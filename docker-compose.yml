@@ -1,0 +1,133 @@
+version: "3.7"
+
+services:
+  caddy:
+    container_name: caddy
+    image: cr.hotio.dev/hotio/caddy
+    restart: unless-stopped
+    ports:
+      - ${CADDY_HTTP_PORT}:8080
+      - ${CADDY_HTTPS_PORT}:8443
+    environment:
+      - PUID="${DOCKER_PUID}"
+      - PGID="${DOCKER_PGID}"
+      - UMASK="${UMASK}"
+      - TZ="${TZ}"
+      - BASE_DOMAIN="${BASE_DOMAIN}"
+      - HTTP_USER="${HTTP_USER}"
+      - HTTP_PASS="${HTTP_PASS}"
+    volumes:
+      - ${BASE_PATH}/caddy/config:/config
+      - ${BASE_PATH}/caddy/panel:/panel
+    cap_add:
+      - NET_ADMIN
+    networks:
+      - seedbox
+
+  plex:
+    container_name: plex
+    image: cr.hotio.dev/hotio/plex
+    restart: unless-stopped
+    ports:
+      - ${PLEX_PORT}:32400
+    environment:
+      - PUID="${DOCKER_PUID}"
+      - PGID="${DOCKER_PGID}"
+      - UMASK="${UMASK}"
+      - TZ="${TZ}"
+      - PLEX_PASS="${PLEX_PASS}"
+    volumes:
+      - ${BASE_PATH}/plex/config:/config
+      - ${BASE_PATH}/plex/transcode:/transcode
+    networks:
+      - seedbox
+
+  tautulli:
+    container_name: tautulli
+    image: cr.hotio.dev/hotio/tautulli
+    restart: unless-stopped
+    environment:
+      - PUID="${DOCKER_PUID}"
+      - PGID="${DOCKER_PGID}"
+      - UMASK="${UMASK}"
+      - TZ="${TZ}"
+    volumes:
+      - ${BASE_PATH}/tautulli/config:/config
+    networks:
+      - seedbox
+
+  rflood:
+    container_name: rflood
+    image: cr.hotio.dev/hotio/rflood
+    restart: unless-stopped
+    environment:
+      - PUID="${DOCKER_PUID}"
+      - PGID="${DOCKER_PGID}"
+      - UMASK="${UMASK}"
+      - TZ="${TZ}"
+      - FLOOD_AUTH="${FLOOD_AUTH}"
+    volumes:
+      - ${BASE_PATH}/rflood/config:/config
+    networks:
+      - seedbox
+
+  jackett:
+    container_name: jackett
+    image: cr.hotio.dev/hotio/jackett
+    restart: unless-stopped
+    environment:
+      - PUID="${DOCKER_PUID}"
+      - PGID="${DOCKER_PGID}"
+      - UMASK="${UMASK}"
+      - TZ="${TZ}"
+    volumes:
+      - ${BASE_PATH}/jackett/config:/config
+    networks:
+      - seedbox
+
+  sonarr:
+    container_name: sonarr
+    image: cr.hotio.dev/hotio/sonarr
+    restart: unless-stopped
+    environment:
+      - PUID="${DOCKER_PUID}"
+      - PGID="${DOCKER_PGID}"
+      - UMASK="${UMASK}"
+      - TZ="${TZ}"
+    volumes:
+      - ${BASE_PATH}/sonarr/config:/config
+    networks:
+      - seedbox
+
+  radarr:
+    container_name: radarr
+    image: cr.hotio.dev/hotio/radarr
+    restart: unless-stopped
+    environment:
+      - PUID="${DOCKER_PUID}"
+      - PGID="${DOCKER_PGID}"
+      - UMASK="${UMASK}"
+      - TZ="${TZ}"
+    volumes:
+      - ${BASE_PATH}/radarr/config:/config
+    networks:
+      - seedbox
+
+  overseerr:
+    container_name: overseerr
+    image: cr.hotio.dev/hotio/overseerr
+    restart: unless-stopped
+    environment:
+      - PUID="${DOCKER_PUID}"
+      - PGID="${DOCKER_PGID}"
+      - UMASK="${UMASK}"
+      - TZ="${TZ}"
+    volumes:
+      - ${BASE_PATH}/overseerr/config:/config
+    networks:
+      - seedbox
+
+networks:
+  seedbox:
+    name: seedbox
+    driver: bridge
