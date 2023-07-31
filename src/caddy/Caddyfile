@@ -1,7 +1,7 @@
 {$BASE_DOMAIN}
 
 route / {
-  root /panel
+  root /app/www
   file_server
 }
 
