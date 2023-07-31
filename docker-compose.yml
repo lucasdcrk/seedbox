@@ -18,9 +18,9 @@ services:
       - HTTP_PASS="${HTTP_PASS}"
     volumes:
       - ./src/caddy/Caddyfile:/app/Caddyfile
+      - ./src/caddy/www:/app/www
       - ./.env:/app/.env
-      - ./containers/caddy/www:/app/www
-      - ./containers/data/downloads:/downloads
+      - ./downloads:/downloads
     cap_add:
       - NET_ADMIN
     networks:
@@ -39,9 +39,9 @@ services:
       - TZ=${TZ}
       - PLEX_PASS=${PLEX_PASS}
     volumes:
-      - ./containers/data/plex/config:/config
-      - ./containers/data/plex/transcode:/transcode
-      - ./containers/data/downloads:/downloads
+      - ./containers/plex/config:/config
+      - ./containers/plex/transcode:/transcode
+      - ./downloads:/downloads
     networks:
       - seedbox
 
@@ -55,7 +55,7 @@ services:
       - UMASK=${UMASK}
       - TZ=${TZ}
     volumes:
-      - ./containers/data/tautulli/config:/config
+      - ./containers/tautulli/config:/config
     networks:
       - seedbox
 
@@ -70,8 +70,8 @@ services:
       - TZ=${TZ}
       - FLOOD_AUTH=${FLOOD_AUTH}
     volumes:
-      - ./containers/data/rflood/config:/config
-      - ./containers/data/downloads:/downloads
+      - ./containers/rflood/config:/config
+      - ./downloads:/downloads
     networks:
       - seedbox
 
@@ -85,7 +85,7 @@ services:
       - UMASK=${UMASK}
       - TZ=${TZ}
     volumes:
-      - ./containers/data/jackett/config:/config
+      - ./containers/jackett/config:/config
     networks:
       - seedbox
 
@@ -99,8 +99,8 @@ services:
       - UMASK=${UMASK}
       - TZ=${TZ}
     volumes:
-      - ./containers/data/sonarr/config:/config
-      - ./containers/data/downloads:/downloads
+      - ./containers/sonarr/config:/config
+      - ./downloads:/downloads
     networks:
       - seedbox
 
@@ -114,8 +114,8 @@ services:
       - UMASK=${UMASK}
       - TZ=${TZ}
     volumes:
-      - ./containers/data/radarr/config:/config
-      - ./containers/data/downloads:/downloads
+      - ./containers/radarr/config:/config
+      - ./downloads:/downloads
     networks:
       - seedbox
 
@@ -129,8 +129,8 @@ services:
       - UMASK=${UMASK}
       - TZ=${TZ}
     volumes:
-      - ./containers/data/overseerr/config:/config
-      - ./containers/data/downloads:/downloads
+      - ./containers/overseerr/config:/config
+      - ./downloads:/downloads
     networks:
       - seedbox
 
