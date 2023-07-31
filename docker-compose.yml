@@ -19,6 +19,7 @@ services:
     volumes:
       - ${BASE_PATH}/caddy/config:/config
       - ${BASE_PATH}/caddy/panel:/panel
+      - ${BASE_PATH}/downloads:/downloads
     cap_add:
       - NET_ADMIN
     networks:
@@ -39,6 +40,7 @@ services:
     volumes:
       - ${BASE_PATH}/plex/config:/config
       - ${BASE_PATH}/plex/transcode:/transcode
+      - ${BASE_PATH}/downloads:/downloads
     networks:
       - seedbox
 
@@ -68,6 +70,7 @@ services:
       - FLOOD_AUTH=${FLOOD_AUTH}
     volumes:
       - ${BASE_PATH}/rflood/config:/config
+      - ${BASE_PATH}/downloads:/downloads
     networks:
       - seedbox
 
@@ -96,6 +99,7 @@ services:
       - TZ=${TZ}
     volumes:
       - ${BASE_PATH}/sonarr/config:/config
+      - ${BASE_PATH}/downloads:/downloads
     networks:
       - seedbox
 
@@ -110,6 +114,7 @@ services:
       - TZ=${TZ}
     volumes:
       - ${BASE_PATH}/radarr/config:/config
+      - ${BASE_PATH}/downloads:/downloads
     networks:
       - seedbox
 
@@ -124,6 +129,7 @@ services:
       - TZ=${TZ}
     volumes:
       - ${BASE_PATH}/overseerr/config:/config
+      - ${BASE_PATH}/downloads:/downloads
     networks:
       - seedbox
 
