@@ -1,6 +1,6 @@
 {$BASE_DOMAIN} {
-  file_server index
-  
+  file_server
+
   basicauth /apps/* {
     {$HTTP_USER} {$HTTP_PASS}
   }
