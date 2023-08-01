@@ -106,3 +106,12 @@ services:
     volumes:
       - ./containers/overseerr/config:/config
       - ./downloads:/downloads
+
+  flaresolverr:
+    container_name: flaresolverr
+    image: ghcr.io/flaresolverr/flaresolverr:latest
+    restart: unless-stopped
+    environment:
+    - LOG_LEVEL=info
+    - LOG_HTML=false
+    - CAPTCHA_SOLVER=none
