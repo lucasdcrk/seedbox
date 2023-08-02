@@ -115,3 +115,14 @@ services:
     - LOG_LEVEL=info
     - LOG_HTML=false
     - CAPTCHA_SOLVER=none
+
+  openvpn:
+    container_name: openvpn
+    image: kylemanna/openvpn
+    restart: unless-stopped
+    cap_add:
+     - NET_ADMIN
+    ports:
+     - 1194:1194/udp
+    volumes:
+     - ./containers/openvpn/config:/etc/openvpn
