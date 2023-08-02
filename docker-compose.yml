@@ -106,3 +106,14 @@ services:
     volumes:
       - ./containers/overseerr/config:/config
       - ./downloads:/downloads
+
+  openvpn:
+    container_name: openvpn
+    image: kylemanna/openvpn
+    restart: unless-stopped
+    cap_add:
+     - NET_ADMIN
+    ports:
+     - 1194:1194/udp
+    volumes:
+     - ./openvpn-data/conf:/etc/openvpn
