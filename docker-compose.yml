@@ -17,8 +17,7 @@ services:
     container_name: plex
     image: cr.hotio.dev/hotio/plex
     restart: unless-stopped
-    ports:
-      - ${PLEX_PORT}:32400
+    network_mode: service:wireguard
     environment:
       - PUID=${DOCKER_PUID}
       - PGID=${DOCKER_PGID}
@@ -109,12 +108,31 @@ services:
 
   flaresolverr:
     container_name: flaresolverr
-    image: ghcr.io/flaresolverr/flaresolverr:latest
+    image: flaresolverr/flaresolverr:latest
     restart: unless-stopped
     environment:
     - LOG_LEVEL=info
     - LOG_HTML=false
     - CAPTCHA_SOLVER=none
+
+  wireguard:
+    container_name: wireguard
+    image: lscr.io/linuxserver/wireguard
+    restart: unless-stopped
+    cap_add:
+      - NET_ADMIN
+      - SYS_MODULE
+    environment:
+      - PUID=${DOCKER_PUID}
+      - PGID=${DOCKER_PGID}
+      - TZ=${TZ}
+    volumes:
+      - ./containers/wireguard:/config
+      - /lib/modules:/lib/modules
+    ports:
+      - ${PLEX_PORT}:32400
+    sysctls:
+      - net.ipv4.conf.all.src_valid_mark=1
 
   openvpn:
     container_name: openvpn
